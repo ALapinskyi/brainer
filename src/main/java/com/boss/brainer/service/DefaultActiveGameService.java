@@ -4,7 +4,6 @@ import com.boss.brainer.domain.mongo.ActiveGame;
 import com.boss.brainer.domain.mongo.BaseActiveGame;
 import com.boss.brainer.repository.ActiveGameRepository;
 import com.boss.brainer.repository.BaseActiveGameRepository;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -24,6 +23,11 @@ public class DefaultActiveGameService implements ActiveGameService {
     public ActiveGame findByGameId(String id) {
         return activeGameRepository.findOne(id);
     }
+
+    public ActiveGame saveOrUpdate(ActiveGame game){
+        return activeGameRepository.save(game);
+    }
+
 
     @Override
     public List<BaseActiveGame> findListByUsername(String username) {

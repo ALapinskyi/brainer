@@ -27,4 +27,7 @@ public class ActiveGame{
     private List<Round> rounds;
     private Round extraRound;
 
+    private Date creationTime;
+    private Date lastChangeTime;
+
 }

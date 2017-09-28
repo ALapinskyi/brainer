@@ -1,8 +1,6 @@
 package com.boss.brainer.rest;
 
 import com.boss.brainer.domain.mongo.Question;
-import com.boss.brainer.domain.mysql.User;
-import com.boss.brainer.repository.QuestionRepository;
 import com.boss.brainer.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

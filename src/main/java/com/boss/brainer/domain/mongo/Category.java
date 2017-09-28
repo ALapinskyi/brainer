@@ -1,17 +1,16 @@
 package com.boss.brainer.domain.mongo;
 
-//TODO auto insert
-
 import lombok.Data;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.Id;
 import java.util.UUID;
 
 @Data
+@Document(collection = "category")
 public class Category {
 
-    @Id
-    private UUID id;
+    private String _id;
     private String title;
 
     public Category(String title){

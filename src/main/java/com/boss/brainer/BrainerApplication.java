@@ -105,8 +105,8 @@ public class BrainerApplication extends SpringBootServletInitializer {
 			questionRepository.save(question2);
 			questionRepository.save(question3);*/
 
-			List<Question> list = questionService.findRandomQuestions(2);
-			System.out.println(list);
+			/*List<Question> list = questionService.findRandomQuestions(2);
+			System.out.println(list);*/
 
 		};
 

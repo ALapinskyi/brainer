@@ -1,8 +1,12 @@
 package com.boss.brainer.rest;
 
+import com.boss.brainer.domain.GameMode;
+import com.boss.brainer.domain.NewGameModel;
 import com.boss.brainer.domain.mongo.ActiveGame;
 import com.boss.brainer.domain.mongo.BaseActiveGame;
+import com.boss.brainer.domain.mongo.GameType;
 import com.boss.brainer.domain.mysql.User;
+import com.boss.brainer.logic.GameHandler;
 import com.boss.brainer.service.ActiveGameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,15 +19,14 @@ import javax.ws.rs.QueryParam;
 import java.util.List;
 
 @Component
-@Path("/games")
+@Path("/game")
 public class ActiveGameRestController {
 
     @Autowired
-    private ActiveGameService activeGameService;
+    private GameHandler gameHandler;
 
-    /*public LoginRestController(UserService userService) {
-        this.userService = userService;
-    }*/
+    @Autowired
+    private ActiveGameService activeGameService;
 
     @GET
     @Path("all")
@@ -37,5 +40,28 @@ public class ActiveGameRestController {
     @Produces("application/json")
     public ActiveGame findActiveGame(@QueryParam(value="gameId")String id) {
         return activeGameService.findByGameId(id);
+    }
+
+    @GET
+    @Path("new")
+    @Produces("application/json")
+    public ActiveGame createNew(@QueryParam(value="mode") String mode) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        NewGameModel newGame = new NewGameModel();
+        newGame.setUser(user);
+        newGame.setMode(GameMode.getValue(mode));
+        newGame.setType(GameType.R5_Q5);
+
+        return gameHandler.createNewGame(newGame);
+    }
+
+    @GET
+    @Path("new")
+    @Produces("application/json")
+    public ActiveGame createNextRound(@QueryParam(value="game") String gameId, @QueryParam(value="category") String category) {
+
+
+        return null;
     }
 }
