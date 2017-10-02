@@ -9,6 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 
 @Component
 @Path("/login")
@@ -21,7 +22,7 @@ public class LoginRestController {
     }
 
     @GET
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     public User autentificateUser(@QueryParam(value="login") String login) {
         //return userDetailsService.loadUserByUsername(login);
         return userService.fingByUsername(login);

@@ -16,6 +16,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Component
@@ -30,21 +31,21 @@ public class ActiveGameRestController {
 
     @GET
     @Path("all")
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     public List<BaseActiveGame> findActiveGames() {
         User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return activeGameService.findListByUsername(user.getUsername());
     }
 
     @GET
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     public ActiveGame findActiveGame(@QueryParam(value="gameId")String id) {
         return activeGameService.findByGameId(id);
     }
 
     @GET
     @Path("new")
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     public ActiveGame createNew(@QueryParam(value="mode") String mode) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
@@ -56,12 +57,12 @@ public class ActiveGameRestController {
         return gameHandler.createNewGame(newGame);
     }
 
-    @GET
+    /*@GET
     @Path("new")
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     public ActiveGame createNextRound(@QueryParam(value="game") String gameId, @QueryParam(value="category") String category) {
 
 
         return null;
-    }
+    }*/
 }
