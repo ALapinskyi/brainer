@@ -1,27 +1,17 @@
 package com.boss.brainer;
 
-import com.boss.brainer.domain.mongo.*;
 import com.boss.brainer.repository.ActiveGameRepository;
-import com.boss.brainer.repository.BaseActiveGameRepository;
-import com.boss.brainer.repository.QuestionRepository;
 import com.boss.brainer.service.QuestionService;
 import com.mongodb.Mongo;
+import org.mongeez.Mongeez;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.mongodb.MongoDbFactory;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
-import org.springframework.data.mongodb.core.convert.DefaultMongoTypeMapper;
-import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
-import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
-import org.springframework.util.CollectionUtils;
-
-import java.util.*;
 
 @SpringBootApplication
 @EnableResourceServer

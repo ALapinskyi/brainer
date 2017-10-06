@@ -4,7 +4,6 @@ import com.boss.brainer.annotation.Game;
 import com.boss.brainer.domain.GameMode;
 import com.boss.brainer.domain.NewGameModel;
 import com.boss.brainer.domain.mongo.*;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.thymeleaf.util.ArrayUtils;
 
