@@ -8,8 +8,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-@Component
-@Path("/category")
+//@Component
+//@Path("/category")
 public class FriendsRestController {
 
 
