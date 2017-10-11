@@ -6,7 +6,7 @@
 	<groupId>com.boss</groupId>
 	<artifactId>brainer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<!--<packaging>war</packaging>-->
 
 	<name>brainer</name>
 	<description></description>
