@@ -139,14 +139,14 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
+				<!--<configuration>
 					<requiresUnpack>
 						<dependency>
 							<groupId>com.boss</groupId>
 							<artifactId>brainer</artifactId>
 						</dependency>
 					</requiresUnpack>
-				</configuration>
+				</configuration>-->
 			</plugin>
 		</plugins>
 	</build>
