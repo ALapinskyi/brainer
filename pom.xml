@@ -6,8 +6,7 @@
 	<groupId>com.boss</groupId>
 	<artifactId>brainer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<!--<packaging>war</packaging>-->
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>brainer</name>
 	<description></description>
@@ -140,6 +139,14 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<requiresUnpack>
+						<dependency>
+							<groupId>com.boss</groupId>
+							<artifactId>brainer</artifactId>
+						</dependency>
+					</requiresUnpack>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
