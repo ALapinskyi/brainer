@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -jar target/*.jar
+web: java $JAVA_OPTS -jar target/brainer-0.0.1-SNAPSHOT.jar
