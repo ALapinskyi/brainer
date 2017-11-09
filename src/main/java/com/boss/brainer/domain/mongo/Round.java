@@ -9,7 +9,7 @@ import java.util.List;
 public class Round {
 
     private String _id;
-    private Integer roundNumber;
+    private Integer number;
     private Category category;
     private List<GameQuestion> questions;
 

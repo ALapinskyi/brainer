@@ -1,5 +1,6 @@
 package com.boss.brainer.domain;
 
+import com.boss.brainer.domain.mongo.GameMode;
 import com.boss.brainer.domain.mongo.GameType;
 import com.boss.brainer.domain.mysql.User;
 import lombok.Data;

@@ -2,6 +2,7 @@ package com.boss.brainer.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -26,6 +27,18 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
     @Qualifier("dataSource")
     private DataSource dataSource;
 
+    @Value("${brainer.oauth.clientId}")
+    private String clientId;
+
+    @Value("${brainer.oauth.secret}")
+    private String secret;
+
+    @Value("${brainer.oauth.grantType}")
+    private String grantType;
+
+    @Value("${brainer.oauth.tokenValiditySeconds}")
+    private Integer tokenValiditySeconds;
+
     @Override
     public void configure(final AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
         oauthServer.tokenKeyAccess("isAnonymous()")
@@ -35,12 +48,12 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(final ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-                .withClient("SampleClientId")
-                .secret("secret")
-                .authorizedGrantTypes("password")
+                .withClient(clientId)
+                .secret(secret)
+                .authorizedGrantTypes(grantType)
                 .scopes("user_info")
                 .autoApprove(true)
-         .accessTokenValiditySeconds(3600); // 1 hour
+         .accessTokenValiditySeconds(tokenValiditySeconds);
     }
 
     @Bean

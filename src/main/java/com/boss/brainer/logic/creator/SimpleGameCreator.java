@@ -1,7 +1,7 @@
 package com.boss.brainer.logic.creator;
 
 import com.boss.brainer.annotation.Game;
-import com.boss.brainer.domain.GameMode;
+import com.boss.brainer.domain.mongo.GameMode;
 import com.boss.brainer.domain.NewGameModel;
 import com.boss.brainer.domain.mongo.*;
 import org.springframework.stereotype.Component;
@@ -9,6 +9,7 @@ import org.thymeleaf.util.ArrayUtils;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
 @Game(GameMode.SIMPLE)
@@ -23,9 +24,14 @@ public class SimpleGameCreator extends BaseGameCreator {
 
         ActiveGame activeGame = new ActiveGame();
 
-        activeGame.setFirstUser(game.getUser().getUsername());
-        activeGame.setFirstUserScore(0);
-        activeGame.setSecondUserScore(0);
+        GameUser gameUser = new GameUser();
+        gameUser.setNumber(1);
+        gameUser.setUsername(game.getUser().getUsername());
+
+        List<GameUser> userList = new ArrayList();
+        userList.add(gameUser);
+
+        activeGame.setPlayers(userList);
         activeGame.setPendingUser(game.getUser().getUsername());
 
         Calendar currentTime = Calendar.getInstance();
@@ -45,7 +51,7 @@ public class SimpleGameCreator extends BaseGameCreator {
         for(int i = 0; i < type.getRounds(); i++){
             Round round = new Round();
 
-            round.setRoundNumber(i + 1);
+            round.setNumber(i + 1);
             round.setQuestions(createQuestions(type));
 
             roundList.add(round);

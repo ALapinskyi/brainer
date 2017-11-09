@@ -1,4 +1,4 @@
-package com.boss.brainer.domain;
+package com.boss.brainer.domain.mongo;
 
 import org.springframework.util.StringUtils;
 

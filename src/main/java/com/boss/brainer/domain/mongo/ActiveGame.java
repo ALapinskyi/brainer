@@ -12,20 +12,18 @@ public class ActiveGame{
 
     private String _id;
 
-    private String firstUser;
-    private String secondUser;
+    private List<GameUser> players;
 
-    private Integer firstUserScore;
-    private Integer secondUserScore;
-
+    private GameMode mode;
     private GameType type;
+
     private String winner;
 
     private Date pendingTime;
     private String pendingUser;
 
     private List<Round> rounds;
-    private Round extraRound;
+    //private Round extraRound;
 
     private Date creationTime;
     private Date lastChangeTime;

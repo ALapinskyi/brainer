@@ -1,6 +1,6 @@
 package com.boss.brainer.rest;
 
-import com.boss.brainer.domain.GameMode;
+import com.boss.brainer.domain.mongo.GameMode;
 import com.boss.brainer.domain.NewGameModel;
 import com.boss.brainer.domain.mongo.ActiveGame;
 import com.boss.brainer.domain.mongo.BaseActiveGame;
@@ -49,10 +49,17 @@ public class ActiveGameRestController {
     public ActiveGame createNew(@QueryParam(value="mode") String mode) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
+
+
         NewGameModel newGame = new NewGameModel();
         newGame.setUser(user);
         newGame.setMode(GameMode.getValue(mode));
         newGame.setType(GameType.R5_Q5);
+
+        ActiveGame pendingGame = activeGameService.findPendingGame(newGame);
+
+        if(pendingGame != null)
+            return pendingGame;
 
         return gameHandler.createNewGame(newGame);
     }
@@ -65,4 +72,5 @@ public class ActiveGameRestController {
 
         return null;
     }*/
+
 }

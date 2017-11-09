@@ -13,13 +13,11 @@ public class BaseActiveGame {
 
     private String _id;
 
-    private String firstUser;
-    private String secondUser;
+    private List<GameUser> players;
 
-    private Integer firstUserScore;
-    private Integer secondUserScore;
-
+    private GameMode mode;
     private GameType type;
+
     private String winner;
 
     private Date pendingTime;

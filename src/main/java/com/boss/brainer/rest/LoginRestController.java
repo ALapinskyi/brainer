@@ -2,7 +2,6 @@ package com.boss.brainer.rest;
 
 import com.boss.brainer.domain.mysql.User;
 import com.boss.brainer.service.UserService;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.GET;

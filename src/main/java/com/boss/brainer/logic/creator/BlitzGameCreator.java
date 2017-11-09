@@ -1,7 +1,7 @@
 package com.boss.brainer.logic.creator;
 
 import com.boss.brainer.annotation.Game;
-import com.boss.brainer.domain.GameMode;
+import com.boss.brainer.domain.mongo.GameMode;
 import com.boss.brainer.domain.NewGameModel;
 import com.boss.brainer.domain.mongo.ActiveGame;
 import com.boss.brainer.domain.mongo.GameType;

@@ -1,6 +1,6 @@
 package com.boss.brainer.annotation;
 
-import com.boss.brainer.domain.GameMode;
+import com.boss.brainer.domain.mongo.GameMode;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

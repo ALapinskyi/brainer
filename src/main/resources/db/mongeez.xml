@@ -1,3 +1,4 @@
 <changeFiles>
     <file path="mongo/init_category.js"/>
+    <file path="mongo/init_questions.js"/>
 </changeFiles>
