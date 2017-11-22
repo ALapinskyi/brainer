@@ -21,7 +21,7 @@ public class CategoryRestController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Category> getCategories(@QueryParam(value = "count") Integer count, @QueryParam(value = "all") Boolean all) {
+    public List<Category> getCategories(@QueryParam(value = "count") Integer count, @QueryParam(value = "all") boolean all) {
         if(all)
             return categoryService.findAll();
         else

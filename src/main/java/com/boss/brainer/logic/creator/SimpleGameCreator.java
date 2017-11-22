@@ -4,6 +4,7 @@ import com.boss.brainer.annotation.Game;
 import com.boss.brainer.domain.mongo.GameMode;
 import com.boss.brainer.domain.NewGameModel;
 import com.boss.brainer.domain.mongo.*;
+import com.boss.brainer.domain.mysql.User;
 import org.springframework.stereotype.Component;
 import org.thymeleaf.util.ArrayUtils;
 
@@ -32,7 +33,10 @@ public class SimpleGameCreator extends BaseGameCreator {
         userList.add(gameUser);
 
         activeGame.setPlayers(userList);
-        activeGame.setPendingUser(game.getUser().getUsername());
+        //activeGame.setPendingUser(game.getUser().getUsername());
+
+        activeGame.setMode(game.getMode());
+        activeGame.setType(game.getType());
 
         Calendar currentTime = Calendar.getInstance();
         activeGame.setCreationTime(currentTime.getTime());
@@ -43,6 +47,18 @@ public class SimpleGameCreator extends BaseGameCreator {
         activeGame.setRounds(createRounds(game.getType()));
 
         return activeGame;
+    }
+
+    @Override
+    public ActiveGame addSecondUser(ActiveGame game, User user) {
+
+        GameUser gameUser = new GameUser();
+        gameUser.setNumber(2);
+        gameUser.setUsername(user.getUsername());
+
+        game.getPlayers().add(gameUser);
+
+        return  game;
     }
 
     private List<Round> createRounds(GameType type){
@@ -63,9 +79,9 @@ public class SimpleGameCreator extends BaseGameCreator {
     private List<GameQuestion> createQuestions(GameType type){
         List<GameQuestion> questionList = new ArrayList<>();
 
-        for(int i = 0; i < type.getRounds(); i++){
+        /*for(int i = 0; i < type.getRounds(); i++){
             questionList.add(new GameQuestion());
-        }
+        }*/
 
         return questionList;
     }

@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Component;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -25,10 +22,11 @@ public class QuestionRestController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Question> findNeededCount(@QueryParam(value="count") Integer count) {
+    public List<Question> findNeededCount(@QueryParam(value="count") Integer count, @QueryParam(value="category") String categoryId) {
 
-        this.template.convertAndSend("/topic/user2", questionService.findRandomQuestions(count).get(0));
+        //this.template.convertAndSend("/topic/user2", questionService.findRandomQuestions(count).get(0));
 
-        return questionService.findRandomQuestions(count);
+        return questionService.findRandomQuestions(count, categoryId);
     }
+
 }

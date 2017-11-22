@@ -13,4 +13,8 @@ public class Answer {
         this._id = new ObjectId().toString();
         this.description = description;
     }
+
+    public Answer(){
+
+    }
 }

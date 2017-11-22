@@ -4,5 +4,5 @@ import com.boss.brainer.domain.mongo.Question;
 
 public interface QuestionRepositoryCustom {
 
-    Question findRandomQuestion();
+    Question findRandomQuestion(String categoryId);
 }

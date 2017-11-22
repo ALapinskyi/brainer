@@ -15,13 +15,13 @@ public class DefaultQuestionService implements QuestionService{
     private QuestionRepository questionRepository;
 
     @Override
-    public List<Question> findRandomQuestions(Integer count) {
+    public List<Question> findRandomQuestions(Integer count, String categoryId) {
 
         List<Question> resultList = new LinkedList<>();
 
         while(resultList.size() < count){
 
-            Question result = questionRepository.findRandomQuestion();
+            Question result = questionRepository.findRandomQuestion(categoryId);
 
             if(resultList.stream().noneMatch(question -> question.get_id().equals(result.get_id())))
                 resultList.add(result);
